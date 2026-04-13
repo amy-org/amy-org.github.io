@@ -3,272 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Wisdom • Rider-Waite-Smith Learning</title>
+    <title>TarotPath • Learn the Rider-Waite-Smith Tarot</title>
     
-    <!-- Materialize CSS CDN -->
+    <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
-    <!-- Custom Tarot Theme -->
+    <!-- Google Fonts - Elegant & Timeless -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cinzel:wght@400;600&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --tarot-gold: #d4af37;
-            --tarot-deep: #3c2f1e;
-            --tarot-warm: #8b5a2b;
-            --tarot-bg: #f8f1e3;
+            --gold: #d4af37;
+            --deep-brown: #3c2f1e;
+            --warm-tan: #8b5a2b;
+            --parchment: #f8f1e3;
         }
         
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--tarot-bg);
-            color: #333;
+            font-family: 'Libre Baskerville', serif;
+            background: linear-gradient(to bottom, #1a140f, #3c2f1e);
+            color: #e8d9b8;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--tarot-deep);
+            color: var(--gold);
+            letter-spacing: 1px;
         }
         
         .nav-wrapper {
-            background-color: var(--tarot-deep) !important;
+            background: rgba(60, 47, 30, 0.95);
+            backdrop-filter: blur(8px);
         }
         
         .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            color: var(--tarot-gold) !important;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold) !important;
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
         }
         
-        .sidenav {
-            background-color: var(--tarot-deep);
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+                        url('https://source.unsplash.com/random/1920x1080/?ancient-book,mystical') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
         }
         
-        .card {
-            background-color: #fffaf0;
-            border: 1px solid #d4af37;
-            border-radius: 8px;
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease forwards;
         }
         
-        .card-title {
-            color: var(--tarot-warm) !important;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tarot-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        
+        .tarot-card:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
         }
         
         .section {
-            padding: 40px 0;
+            padding: 80px 0;
         }
         
-        .lesson-card {
-            transition: transform 0.3s ease;
+        .card {
+            background: #fffaf0;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            overflow: hidden;
         }
         
-        .lesson-card:hover {
-            transform: translateY(-8px);
+        .lesson {
+            background: rgba(255, 250, 240, 0.95);
+            border-left: 5px solid var(--gold);
         }
         
-        .tarot-gold-text {
-            color: var(--tarot-gold);
+        .gold-text {
+            color: var(--gold);
         }
         
         footer {
-            background-color: var(--tarot-deep);
+            background: var(--deep-brown);
         }
         
-        .progress {
-            background-color: #e0d4b8;
+        /* Cinematic Scroll Effect */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
-    
-    <!-- Google Fonts for elegant feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="nav-wrapper">
         <div class="container">
-            <a href="#" class="brand-logo">Tarot Wisdom</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" class="brand-logo">TarotPath</a>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
                 <li><a href="#what-is-tarot">What is Tarot</a></li>
-                <li><a href="#basics">Deck Basics</a></li>
                 <li><a href="#intuition">Intuition</a></li>
                 <li><a href="#numerology">Numerology</a></li>
-                <li><a href="#practice">Practice</a></li>
+                <li><a href="#practice">Begin Your Path</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Mobile Sidenav -->
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#what-is-tarot">What is Tarot</a></li>
-        <li><a href="#basics">Deck Basics</a></li>
-        <li><a href="#intuition">Intuition</a></li>
-        <li><a href="#numerology">Numerology</a></li>
-        <li><a href="#practice">Practice</a></li>
-    </ul>
+    <!-- Cinematic Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="white-text" style="font-size: 4.5rem; margin-bottom: 20px;">Enter the Ancient Path</h1>
+            <p class="flow-text white-text" style="font-size: 1.4rem; max-width: 600px; margin: 0 auto 30px;">
+                Discover the Rider-Waite-Smith Tarot<br>
+                <span style="color: #d4af37;">From beginner to deep wisdom</span>
+            </p>
+            <a href="#what-is-tarot" class="btn-large waves-effect waves-light" 
+               style="background: #d4af37; color: #3c2f1e; font-weight: bold;">
+                Begin Your Journey
+            </a>
+        </div>
+        
+        <!-- Floating Cards Animation -->
+        <div style="position: absolute; bottom: 10%; left: 10%; width: 120px; opacity: 0.85; transform: rotate(-12deg);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/RWS_Tarot_01_Magician.jpg/300px-RWS_Tarot_01_Magician.jpg" 
+                 class="tarot-card" style="width: 100%; border-radius: 8px;" alt="The Magician">
+        </div>
+        <div style="position: absolute; bottom: 15%; right: 12%; width: 110px; opacity: 0.9; transform: rotate(8deg);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/300px-RWS_Tarot_02_High_Priestess.jpg" 
+                 class="tarot-card" style="width: 100%; border-radius: 8px;" alt="The High Priestess">
+        </div>
+    </div>
 
     <div class="container">
 
-        <!-- Hero Section -->
-        <div class="section center">
-            <h1 class="tarot-gold-text">Welcome to Tarot Wisdom</h1>
-            <p class="flow-text">Learn the Rider-Waite-Smith Tarot from basic to advanced</p>
-            <p class="grey-text text-darken-2">A gentle, credible learning journey based on Joan Bunning and A.E. Waite</p>
-        </div>
-
         <!-- What is Tarot -->
-        <div id="what-is-tarot" class="section">
+        <section id="what-is-tarot" class="section scroll-reveal">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m8 offset-m2">
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">What is Tarot?</span>
-                            <p><strong>Tarot</strong> is a deck of 78 beautifully illustrated cards used as a powerful tool for <strong>self-reflection, insight, and personal guidance</strong>.</p>
-                            <p>It helps you:</p>
-                            <ul class="browser-default">
-                                <li>Understand your current life situation more deeply</li>
-                                <li>Explore your subconscious thoughts and emotions</li>
-                                <li>Make conscious decisions by seeing hidden patterns</li>
-                                <li>Connect with your own inner wisdom</li>
-                            </ul>
-                            <p class="grey-text">The Rider-Waite-Smith deck (1909) is the most popular because every card has rich symbolic imagery that speaks directly to intuition.</p>
+                            <h2 class="center gold-text">What is Tarot?</h2>
+                            <p class="center" style="font-size: 1.15rem;">
+                                Tarot is a deck of 78 symbolic cards used for deep self-reflection and inner guidance. 
+                                Created in 1909, the Rider-Waite-Smith deck remains the most loved because every card tells a story through rich imagery.
+                            </p>
+                            <p class="center">It is not about predicting fate — it is about understanding yourself and your path with clarity and wisdom.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Deck Basics -->
-        <div id="basics" class="section">
-            <h2 class="center">Deck Basics</h2>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card lesson-card">
-                        <div class="card-content">
-                            <span class="card-title">Structure of the Deck</span>
-                            <p><strong>78 Cards Total</strong></p>
-                            <ul>
-                                <li><strong>Major Arcana</strong> (22 cards): Major life lessons and spiritual journey</li>
-                                <li><strong>Minor Arcana</strong> (56 cards): Everyday situations and practical matters</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card lesson-card">
-                        <div class="card-content">
-                            <span class="card-title">The Four Suits</span>
-                            <ul>
-                                <li><strong>Wands</strong> — Fire: Action, passion, creativity</li>
-                                <li><strong>Cups</strong> — Water: Emotions, relationships, intuition</li>
-                                <li><strong>Swords</strong> — Air: Thoughts, truth, challenges</li>
-                                <li><strong>Pentacles</strong> — Earth: Money, work, physical world</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- Intuition -->
-        <div id="intuition" class="section">
-            <h2 class="center">Intuition in Tarot</h2>
+        <section id="intuition" class="section scroll-reveal">
             <div class="row">
                 <div class="col s12">
-                    <div class="card">
+                    <h2 class="center gold-text">The Power of Intuition</h2>
+                    <div class="lesson card">
                         <div class="card-content">
-                            <span class="card-title">What is Intuition?</span>
-                            <p>Intuition is your natural <strong>inner knowing</strong> — a quiet feeling or sense that comes before logical thinking.</p>
+                            <p>Before looking up any meaning, spend time with the card’s image. Notice what feelings, colors, or stories arise naturally.</p>
+                            <p><strong>Intuition is your inner voice.</strong> The cards are designed to awaken it. Traditional meanings give you structure, but your intuition gives the message personal truth.</p>
                             
-                            <h5>Why Intuition Matters in Tarot</h5>
-                            <ul class="browser-default">
-                                <li>The beautiful pictures on Rider-Waite-Smith cards are made to awaken your intuition</li>
-                                <li>Always look at the card image first and notice what you feel</li>
-                                <li>Traditional meanings give structure, but intuition gives personal relevance</li>
-                                <li>Intuition helps you apply the card to your unique life situation</li>
-                            </ul>
-                            
-                            <div class="center" style="margin-top: 25px;">
-                                <h6><strong>Simple Daily Exercise</strong></h6>
-                                <p>1. Pull one card<br>
-                                   2. Look at the picture quietly for 1 minute<br>
-                                   3. Write down the first feelings or story that comes to you<br>
-                                   4. Then check the traditional meaning</p>
+                            <div class="center" style="margin-top: 30px;">
+                                <h5>Simple Daily Practice</h5>
+                                <p>1. Draw one card<br>
+                                   2. Sit quietly with the image for one minute<br>
+                                   3. Write down the first feeling or thought that comes<br>
+                                   4. Only then read the traditional meaning</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Basic Numerology -->
-        <div id="numerology" class="section">
-            <h2 class="center">Basic Numerology in Tarot</h2>
+        <section id="numerology" class="section scroll-reveal">
             <div class="row">
                 <div class="col s12">
+                    <h2 class="center gold-text">Basic Numerology in Tarot</h2>
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">Simple Number Meanings</span>
-                            <p class="grey-text">Each number carries a basic energy. Combine the number with the suit’s element for deeper understanding.</p>
-                            
-                            <div class="row">
-                                <div class="col s6 m3">
-                                    <strong>Ace (1)</strong><br>New beginning, pure potential
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>2</strong><br>Balance, choice, partnership
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>3</strong><br>Growth, creativity, expansion
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>4</strong><br>Stability, foundation, structure
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>5</strong><br>Challenge, change, learning
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>6</strong><br>Harmony, resolution
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>7</strong><br>Inner reflection, assessment
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>8</strong><br>Movement, mastery, power
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>9</strong><br>Near completion, wisdom
-                                </div>
-                                <div class="col s6 m3">
-                                    <strong>10</strong><br>Completion of cycle, fulfillment
-                                </div>
+                            <div class="row center">
+                                <div class="col s6 m3"><strong>Ace</strong><br>New beginning • Pure potential</div>
+                                <div class="col s6 m3"><strong>2</strong><br>Balance • Choice</div>
+                                <div class="col s6 m3"><strong>3</strong><br>Growth • Creativity</div>
+                                <div class="col s6 m3"><strong>4</strong><br>Stability • Foundation</div>
+                                <div class="col s6 m3"><strong>5</strong><br>Challenge • Change</div>
+                                <div class="col s6 m3"><strong>6</strong><br>Harmony • Resolution</div>
+                                <div class="col s6 m3"><strong>7</strong><br>Reflection • Inner work</div>
+                                <div class="col s6 m3"><strong>10</strong><br>Completion • New cycle</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Practice Section -->
-        <div id="practice" class="section">
-            <h2 class="center">Start Practicing</h2>
-            <div class="card">
-                <div class="card-content">
-                    <p class="center">1. Take out your three cards: <strong>The Magician, The High Priestess, The Empress</strong></p>
-                    <p class="center">2. Look at each card quietly and note the feelings and keywords.</p>
-                    <p class="center">3. Ask yourself: “What energy does this card bring to my manifestation practice?”</p>
+        <!-- Your Three Cards -->
+        <section id="practice" class="section scroll-reveal">
+            <h2 class="center gold-text">Your Starting Cards</h2>
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="card tarot-card">
+                        <div class="card-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/RWS_Tarot_01_Magician.jpg/400px-RWS_Tarot_01_Magician.jpg" 
+                                 alt="The Magician" style="height: 380px; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h5>The Magician</h5>
+                            <p>Skill • Willpower • Manifestation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card tarot-card">
+                        <div class="card-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/400px-RWS_Tarot_02_High_Priestess.jpg" 
+                                 alt="The High Priestess" style="height: 380px; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h5>The High Priestess</h5>
+                            <p>Intuition • Inner wisdom • Mystery</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card tarot-card">
+                        <div class="card-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/RWS_Tarot_03_Empress.jpg/400px-RWS_Tarot_03_Empress.jpg" 
+                                 alt="The Empress" style="height: 380px; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h5>The Empress</h5>
+                            <p>Abundance • Nurturing • Creative flow</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
     </div>
 
     <footer class="page-footer">
-        <div class="container">
-            <div class="center">
-                Tarot Wisdom • Rider-Waite-Smith Learning Platform<br>
-                Built with respect for credible sources (Joan Bunning & A.E. Waite)
-            </div>
+        <div class="container center">
+            <p>TarotPath • A quiet space to learn the Rider-Waite-Smith Tarot with respect and depth</p>
         </div>
     </footer>
 
@@ -276,10 +274,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            M.Sidenav.init(elems);
+            M.AutoInit();
+            
+            // Scroll reveal animation
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            reveals.forEach(reveal => observer.observe(reveal));
         });
     </script>
-
 </body>
 </html>
